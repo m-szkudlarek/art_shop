@@ -1,0 +1,241 @@
+@use "./colors" as colors;
+@use "./sizes" as sizes;
+:root {
+  font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+  font-family: "Roboto", sans-serif;
+}
+
+footer,
+header,
+nav,
+section,
+main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  border-radius: 0;
+}
+
+// sizin for text
+
+h1 {
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+@keyframes scaleUpCenter {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
+
+.container-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1400px;
+  min-width: 300px;
+  width: 100%;
+  padding: 30px;
+}
+
+.header {
+  width: 100%;
+  background: colors.$gredient-main;
+}
+.right-side--header {
+  display: flex;
+  .logo--header {
+    height: 150px;
+    border: 1px solid colors.$black;
+    flex-grow: 1;
+  }
+
+  button {
+    display: flex;
+    padding: 0 5px;
+    font-size: sizes.$fs-regular;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.left-side--header {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+  .header-links {
+    padding: 20px 10px;
+    justify-self: center;
+    align-self: center;
+  }
+  a {
+    display: inline-block;
+    padding: 0 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: sizes.$fs-basic;
+    color: colors.$black;
+  }
+  a:hover {
+    animation: scaleUpCenter 0.4s linear forwards;
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+.search-field {
+  max-width: 400px;
+  flex-grow: 1;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .left-side--header {
+    flex-direction: row-reverse;
+
+    a {
+      font-size: sizes.$fs-regular;
+    }
+  }
+  .right-side--header {
+    button {
+      font-size: sizes.$fs-medium;
+    }
+  }
+  .search {
+    font-size: sizes.$fs-regular;
+    flex-grow: 1;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .container-wrapper {
+    flex-direction: row;
+    padding: 60px;
+  }
+
+  .left-side--header {
+    margin-left: auto;
+  }
+
+  .logo--header {
+    min-width: 300px;
+  }
+}
