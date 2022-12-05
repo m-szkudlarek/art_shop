@@ -140,6 +140,15 @@ h5 {
     transform: scale(1.25);
   }
 }
+
+@keyframes showUpShadow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 // utilities classes for styling
 .container-wrapper {
   display: flex;
@@ -151,6 +160,15 @@ h5 {
   padding: 30px;
 }
 
+a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: sizes.$fs-basic;
+}
+
+.hidden {
+  opacity: 0;
+}
 // main styles
 .header {
   width: 100%;
@@ -189,15 +207,10 @@ h5 {
   padding: 40px 0;
   .header-links {
     padding: 20px 10px;
-    justify-self: center;
-    align-self: center;
   }
   a {
     display: inline-block;
     padding: 0 20px;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: sizes.$fs-basic;
     color: colors.$black;
   }
   a:hover {
@@ -208,7 +221,7 @@ h5 {
 .search {
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px 10px;
 }
 .search-field {
   border: none;
@@ -224,7 +237,7 @@ h5 {
 }
 
 .sidebar {
-  background-color: colors.$complementary;
+  background-color: colors.$accent;
   width: 100vw;
   height: 100vh;
   transform: translateX(-100vw);
@@ -234,30 +247,82 @@ h5 {
 .sidebar--open {
   transform: translateX(0px);
 }
+
+.navbar {
+  padding: 30px;
+}
+
+.navbar-links:first-child {
+  border-top: 2px solid colors.$dominant;
+}
+.navbar-link {
+  padding: 20px 0;
+  border-bottom: 2px solid colors.$dominant;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-style: italic;
+
+  a {
+    color: colors.$dominant;
+  }
+  ::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc(sizes.$fs-basic / 4 + 20px / 4);
+    left: 25%;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 50%;
+    height: calc(sizes.$fs-basic + 20px);
+    border-radius: 50%;
+    filter: blur(5px);
+    opacity: 0;
+  }
+  a:hover::after {
+    animation-name: showUpShadow;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+}
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
+  .container-wrapper {
+    flex-direction: row;
+  }
   .left-side--header {
-    flex-direction: row-reverse;
-
     a {
       font-size: sizes.$fs-regular;
     }
   }
   .right-side--header {
+    flex-grow: 1;
     button {
       font-size: sizes.$fs-medium;
     }
+    .logo {
+      width: fit-content;
+    }
+  }
+
+  .logo--header {
+    align-items: flex-start;
   }
   .search {
     font-size: sizes.$fs-regular;
     flex-grow: 1;
+  }
+
+  .sidebar {
+    width: max-content;
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .container-wrapper {
-    flex-direction: row;
     padding: 60px;
   }
 
