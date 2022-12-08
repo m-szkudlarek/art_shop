@@ -19,50 +19,54 @@
     <script type="module" src="./control.js"></script>
   </head>
   <body>
-    <header class="header">
-      <div class="container-wrapper">
-        <div class="right-side--header">
-          <button class="bnt-navbar"><i class="fa-solid fa-bars"></i></button>
-          <div class="logo--header">
-            <img class="logo" src="./svg/logo.svg" alt="svg" />
+    <div class="app">
+      <div class="header--bg">
+        <div class="header wrapper">
+          <div class="menu">
+            <div class="right-side--menu">
+              <button class="bnt-navbar">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <img class="logo" src="./svg/logo.svg" alt="kanapa" />
+            </div>
+            <div class="left-side--menu">
+              <div class="links--menu">
+                <a href="">logowanie</a>
+                <a href="">pomoc</a>
+              </div>
+              <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  class="search-field"
+                  type="search"
+                  placeholder="Wyszukaj produkt..."
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="left-side--header">
-          <div class="header-links">
-            <a href="">logowanie</a>
-            <a href="">pomoc</a>
-          </div>
-          <div class="search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input
-              class="search-field"
-              type="search"
-              placeholder="Wyszukaj produkt..."
-            />
+          <div class="sidebar hidden">
+            <div class="logo--holder">
+              <button class="bnt-navbar">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <img class="logo" src="./svg/logo.svg" alt="kanapa" />
+            </div>
+            <nav class="navbar">
+              <ul class="navbar-links">
+                <li class="navbar-link"><a href="">test1</a></li>
+                <li class="navbar-link"><a href="">test2</a></li>
+                <li class="navbar-link"><a href="">test3</a></li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
-    </header>
-    <aside class="sidebar hidden">
-      <div class="container-wrapper">
-        <div class="right-side--header">
-          <button class="bnt-navbar">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-          <div class="logo--header">
-            <img class="logo" src="./svg/logo.svg" alt="svg" />
-          </div>
-        </div>
+      <div class="main--bg">
+        <div class="main wrapper"></div>
       </div>
-      <nav class="navbar">
-        <ul class="navbar-links">
-          <li class="navbar-link"><a href="">test1</a></li>
-          <li class="navbar-link"><a href="">test2</a></li>
-          <li class="navbar-link"><a href="">test3</a></li>
-        </ul>
-      </nav>
-    </aside>
-    <main></main>
-    <footer></footer>
+      <div class="footer--bg">
+        <div class="footer wrapper"></div>
+      </div>
+    </div>
   </body>
 </html>

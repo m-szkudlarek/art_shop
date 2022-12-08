@@ -150,14 +150,9 @@ h5 {
   }
 }
 // utilities classes for styling
-.container-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
+.wrapper {
   max-width: 1400px;
-  min-width: 300px;
-  width: 100%;
-  padding: 30px;
+  margin: 0 auto;
 }
 
 a {
@@ -165,52 +160,53 @@ a {
   text-decoration: none;
   font-size: sizes.$fs-basic;
 }
-
+i {
+  min-height: 20px;
+  min-width: 20px;
+}
 .hidden {
   opacity: 0;
 }
 // main styles
-.header {
+.header--bg {
   width: 100%;
   background: colors.$gredient-main;
 }
 
-.header-sidebar--open {
-  position: fixed;
-}
-.right-side--header {
+.menu {
   display: flex;
-  .logo--header {
-    height: 150px;
-    flex-grow: 1;
-  }
-
-  .logo {
-    // filter: invert(0.5) sepia(5) saturate(10) hue-rotate(2deg);
-    width: 100%;
-    height: 100%;
-  }
-
-  button {
-    display: flex;
-    padding: 0 5px;
-    font-size: sizes.$fs-regular;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 10px;
+  font-size: sizes.$fs-basic;
+  width: 100%;
 }
 
-.left-side--header {
+.right-side--menu {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-grow: 1;
+}
+.bnt-navbar {
+  padding: 0 5px;
+  font-size: sizes.$fs-regular;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.left-side--menu {
   display: flex;
   flex-direction: column;
-  padding: 40px 0;
-  .header-links {
-    padding: 20px 10px;
+  justify-content: space-between;
+  padding: 0 5px;
+  .links--menu {
+    padding: 10px 0;
   }
   a {
     display: inline-block;
-    padding: 0 20px;
+    padding-right: 10px;
     color: colors.$black;
   }
   a:hover {
@@ -220,16 +216,15 @@ a {
 
 .search {
   display: flex;
-  align-items: center;
-  padding: 20px 10px;
+  align-items: flex-start;
+  padding: 10px 0px;
 }
 .search-field {
   border: none;
   border-bottom: 2px solid colors.$black;
   background-color: transparent;
   color: colors.$black;
-  max-width: 400px;
-  flex-grow: 1;
+  margin-left: 5px;
 }
 
 .search-field:focus {
@@ -237,15 +232,28 @@ a {
 }
 
 .sidebar {
+  position: fixed;
+  top: 0;
+  padding: 20px 10px;
   background-color: colors.$accent;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   transform: translateX(-100vw);
-  transition: transform 0.6s linear;
+  transition: transform 0.6s linear, opacity 0.6s ease-in-out;
 }
 
 .sidebar--open {
   transform: translateX(0px);
+}
+
+.logo--holder {
+  display: flex;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
 }
 
 .navbar {
@@ -287,50 +295,60 @@ a {
     animation-fill-mode: forwards;
   }
 }
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  background-color: aqua;
+}
+.main--content {
+  width: 100%;
+  height: 100vh;
+}
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .container-wrapper {
-    flex-direction: row;
-  }
-  .left-side--header {
-    a {
-      font-size: sizes.$fs-regular;
-    }
-  }
-  .right-side--header {
-    flex-grow: 1;
-    button {
-      font-size: sizes.$fs-medium;
-    }
-    .logo {
-      width: fit-content;
-    }
+  a {
+    font-size: sizes.$fs-regular;
   }
 
-  .logo--header {
-    align-items: flex-start;
-  }
-  .search {
+  .menu {
+    padding: 40px 20px;
     font-size: sizes.$fs-regular;
-    flex-grow: 1;
   }
 
   .sidebar {
-    width: max-content;
+    padding: 40px 20px;
+    min-width: fit-content;
+    width: 30%;
+    height: fit-content;
+    transform: translateX(0);
+  }
+
+  .navbar-link {
+    ::after {
+      top: calc(sizes.$fs-regular / 4 + 20px / 4);
+      height: calc(sizes.$fs-regular + 20px);
+    }
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .container-wrapper {
-    padding: 60px;
-  }
+  .left-side--menu {
+    flex-direction: row-reverse;
 
-  .left-side--header {
-    margin-left: auto;
+    .links--menu {
+      padding: 10px 5px;
+    }
+    .search {
+      padding: 10px 5px;
+    }
   }
+}
 
-  .logo--header {
-    min-width: 300px;
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+  .sidebar {
+    width: 20%;
   }
 }
