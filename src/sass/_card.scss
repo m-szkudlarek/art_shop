@@ -1,0 +1,46 @@
+@use "./colors" as colors;
+@use "./sizes" as sizes;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: fit-content;
+  background-color: colors.$card-bg;
+  border-radius: 5%;
+  padding: 20px;
+  div {
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    display: inline-block;
+    font-size: sizes.$fs-basic;
+    background-color: colors.$dominant;
+    text-align: center;
+    padding: 10px 5px;
+    border-radius: 2px;
+  }
+  &__description {
+    font-size: sizes.$fs-basic;
+    color: colors.$accent;
+    align-self: flex-start;
+    p {
+      padding: 5px 0;
+    }
+  }
+
+  &__bnt {
+    font-size: sizes.$fs-basic;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: colors.$dominant;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0px 0px 15px colors.$dominant;
+  }
+}

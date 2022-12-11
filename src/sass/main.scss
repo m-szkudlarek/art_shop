@@ -1,155 +1,14 @@
 @use "./colors" as colors;
 @use "./sizes" as sizes;
-:root {
-  font-size: 62.5%;
-}
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-html,
-body,
-div,
-span,
-object,
-iframe,
-figure,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-code,
-em,
-img,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-b,
-u,
-i,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-main,
-canvas,
-embed,
-footer,
-header,
-nav,
-section,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  text-size-adjust: none;
-  font-family: "Roboto", sans-serif;
-}
-
-footer,
-header,
-nav,
-section,
-main {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-input {
-  border-radius: 0;
-}
-
-// sizin for text
-
-h1 {
-  font-size: 3.052rem;
-}
-
-h2 {
-  font-size: 2.441rem;
-}
-
-h3 {
-  font-size: 1.953rem;
-}
-
-h4 {
-  font-size: 1.563rem;
-}
-
-h5 {
-  font-size: 1.25rem;
-}
-// animations
-@keyframes scaleUpCenter {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.25);
-  }
-}
-
-@keyframes showUpShadow {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+@use "./reset";
+@use "./typografy";
+@use "./animation";
+@use "./card";
 // utilities classes for styling
+.app {
+  width: 100%;
+  height: 100%;
+}
 .wrapper {
   max-width: 1400px;
   margin: 0 auto;
@@ -169,6 +28,7 @@ i {
 }
 // main styles
 .header--bg {
+  overflow: hidden;
   width: 100%;
   background: colors.$gredient-main;
 }
@@ -235,7 +95,7 @@ i {
   position: fixed;
   top: 0;
   padding: 20px 10px;
-  background-color: colors.$accent;
+  background-color: colors.$complementary;
   width: 100%;
   height: 100vh;
   transform: translateX(-100vw);
@@ -273,6 +133,7 @@ i {
   font-style: italic;
 
   a {
+    display: block;
     color: colors.$dominant;
   }
   ::after {
@@ -295,15 +156,24 @@ i {
     animation-fill-mode: forwards;
   }
 }
-
-.main {
-  width: 100vw;
-  height: 100vh;
-  background-color: aqua;
+.sidebar.hidden .navbar-link a {
+  pointer-events: none;
 }
-.main--content {
+
+.main--bg {
   width: 100%;
-  height: 100vh;
+  height: 90%;
+  background-color: colors.$complementary;
+}
+.main {
+  background: url("../svg/bg--main.svg");
+  background-size: cover;
+  // background-position: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 10px;
 }
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
@@ -311,6 +181,11 @@ i {
     font-size: sizes.$fs-regular;
   }
 
+  .bnt-navbar {
+    margin-right: 30px;
+    font-size: sizes.$fs-medium;
+    width: 50px;
+  }
   .menu {
     padding: 40px 20px;
     font-size: sizes.$fs-regular;
@@ -321,14 +196,21 @@ i {
     min-width: fit-content;
     width: 30%;
     height: fit-content;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     transform: translateX(0);
   }
 
   .navbar-link {
     ::after {
+      left: 0;
+      width: 100%;
       top: calc(sizes.$fs-regular / 4 + 20px / 4);
       height: calc(sizes.$fs-regular + 20px);
     }
+  }
+  .main {
+    padding: 80px 40px;
   }
 }
 
